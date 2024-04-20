@@ -21,6 +21,22 @@ def prob1
     # average "feels like" temperature just for funsies
     avg_feels_like = feels_like.sum/feels_like.size
     puts "But the average felt more like: #{avg_feels_like}"
-    
+
 end
-puts prob1
+# puts prob1
+
+# Problem 2
+def prob2
+
+    my_api_key = '73f8e735f5cfa29de5d1d481ed6e4d45'
+    sc = 'USD'
+    tc = 'CAD'
+    amt = 100
+    # get request to find the exchange rate
+    response = HTTParty.get("http://api.exchangeratesapi.io/v1/latest?access_key=#{my_api_key}&symbols=#{sc},#{tc}")
+    # puts response
+    
+    # calculate the exchange
+    response['rates'][tc] * amt
+end
+puts prob2
